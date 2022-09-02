@@ -16,10 +16,8 @@ public class MainActivity extends AppCompatActivity {
 
     private TextInputLayout inputLayoutNumero;
     private TextInputLayout inputLayoutMensagem;
-
     private TextInputEditText inputEditTextNumero;
     private TextInputEditText inputEditTextMensagem;
-
     private Button buttonMensagem;
 
     @Override
@@ -29,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
 
         inputLayoutNumero = findViewById(R.id.input_layout_numero);
         inputLayoutMensagem = findViewById(R.id.input_layout_mensagem);
-
 
         inputEditTextNumero = findViewById(R.id.input_text_numero);
         inputEditTextMensagem = findViewById(R.id.input_text_mensagem);
@@ -42,23 +39,23 @@ public class MainActivity extends AppCompatActivity {
                 String numeroTelefone = inputEditTextNumero.getText().toString();
                 String mensagem = inputEditTextMensagem.getText().toString();
 
-             String url = formatoUrl(numeroTelefone, mensagem);
+                String url = formatoUrl(numeroTelefone, mensagem);
 
                 enviarMensagem(url);
 
             }
 
-            public String formatoUrl(String numeroTelefone, String mensagem){
-                mensagem = mensagem.replace(" " ,"%20");
+            public String formatoUrl(String numeroTelefone, String mensagem) {
+                mensagem = mensagem.replace(" ", "%20");
 
-               String link = "https://wa.me/" + numeroTelefone +"?text="+ mensagem;
+                String link = "https://wa.me/" + numeroTelefone + "?text=" + mensagem;
                 return link;
             }
 
             public void enviarMensagem(String url) {
                 Uri webpage = Uri.parse(url);
                 Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
-                    startActivity(intent);
+                startActivity(intent);
             }
 
         });
